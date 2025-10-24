@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Prompts - Valoración Ácido-Base</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Simulador de Prompts para Valoración Ácido-Base</h1>
+            <p>Practica cómo hacer buenas preguntas al asistente IA antes de usar LabsLand</p>
+        </header>
+
+        <main>
+            <!-- Área de entrada -->
+            <section class="input-section">
+                <label for="prompt-input">Escribe tu prompt aquí:</label>
+                <textarea 
+                    id="prompt-input" 
+                    placeholder="Ejemplo: Estoy realizando una valoración de HCl con NaOH..."
+                    rows="6"
+                ></textarea>
+                <div class="char-counter">
+                    <span id="char-count">0</span>/500 caracteres
+                </div>
+                
+                <div class="button-group">
+                    <button id="analyze-btn" class="primary-btn">Analizar Prompt</button>
+                    <button id="clear-btn" class="secondary-btn">Limpiar</button>
+                    <button id="example-btn" class="secondary-btn">Ver Ejemplo</button>
+                </div>
+            </section>
+
+            <!-- Sección de resultados -->
+            <section id="results-section" class="results hidden">
+                <h2>Análisis de tu Prompt</h2>
+                
+                <!-- Puntuaciones visuales -->
+                <div class="scores-grid">
+                    <div class="score-item">
+                        <span class="score-label">Contexto</span>
+                        <div class="stars" id="context-stars"></div>
+                        <span class="score-value" id="context-score">0/5</span>
+                    </div>
+                    
+                    <div class="score-item">
+                        <span class="score-label">Especificidad</span>
+                        <div class="stars" id="specificity-stars"></div>
+                        <span class="score-value" id="specificity-score">0/5</span>
+                    </div>
+                    
+                    <div class="score-item">
+                        <span class="score-label">Claridad</span>
+                        <div class="stars" id="clarity-stars"></div>
+                        <span class="score-value" id="clarity-score">0/5</span>
+                    </div>
+                    
+                    <div class="score-item">
+                        <span class="score-label">Objetivo</span>
+                        <div class="stars" id="objective-stars"></div>
+                        <span class="score-value" id="objective-score">0/5</span>
+                    </div>
+                    
+                    <div class="score-item">
+                        <span class="score-label">Completitud</span>
+                        <div class="stars" id="completeness-stars"></div>
+                        <span class="score-value" id="completeness-score">0/5</span>
+                    </div>
+                </div>
+
+                <!-- Puntuación total con barra de progreso -->
+                <div class="total-score">
+                    <div class="score-bar-container">
+                        <div id="score-bar" class="score-bar"></div>
+                    </div>
+                    <h3 id="total-score-text">Puntuación Total: 0/100</h3>
+                    <p id="score-message" class="score-message"></p>
+                </div>
+
+                <!-- Sugerencias de mejora -->
+                <div class="suggestions">
+                    <h3>💡 Sugerencias de mejora:</h3>
+                    <ul id="suggestions-list"></ul>
+                </div>
+
+                <!-- Prompt mejorado (opcional) -->
+                <div id="improved-prompt" class="improved-prompt hidden">
+                    <h3>✨ Versión mejorada sugerida:</h3>
+                    <div class="improved-text" id="improved-text"></div>
+                </div>
+            </section>
+
+            <!-- Sección de ejemplos -->
+            <section id="examples-modal" class="modal hidden">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Ejemplos de Buenos Prompts</h2>
+                    <div class="examples-grid">
+                        <!-- Se llenarán dinámicamente -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="analyzer.js"></script>
+</body>
+</html>
